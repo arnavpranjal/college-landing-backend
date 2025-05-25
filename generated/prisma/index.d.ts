@@ -2015,16 +2015,16 @@ export namespace Prisma {
 
   export type LeadWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    email?: string
     AND?: LeadWhereInput | LeadWhereInput[]
     OR?: LeadWhereInput[]
     NOT?: LeadWhereInput | LeadWhereInput[]
     fullName?: StringFilter<"Lead"> | string
+    email?: StringFilter<"Lead"> | string
     mobilePhone?: StringFilter<"Lead"> | string
     consent?: BoolFilter<"Lead"> | boolean
     createdAt?: DateTimeFilter<"Lead"> | Date | string
     updatedAt?: DateTimeFilter<"Lead"> | Date | string
-  }, "id" | "email">
+  }, "id">
 
   export type LeadOrderByWithAggregationInput = {
     id?: SortOrder

@@ -16,7 +16,7 @@ datasource db {
 model Lead {
   id          String   @id @default(cuid()) // Unique ID, cuid is good for distributed systems
   fullName    String
-  email       String   @unique // Email should be unique
+  email       String   
   mobilePhone String
   consent     Boolean
   createdAt   DateTime @default(now()) // Timestamp for when the record was created
