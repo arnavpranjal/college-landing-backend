@@ -12,12 +12,24 @@ async function bootstrap() {
     origin: [
       'http://localhost:3001', // Next.js dev server
       'http://localhost:3000', // Alternative local port
-      'https://college-landing-frontend.vercel.app', // Production frontend (without trailing slash)
+      'https://college-landing-frontend.vercel.app', // Production frontend
       'https://landingpage-frontend.vercel.app', // Alternative frontend URL
     ],
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
+    allowedHeaders: [
+      'Origin',
+      'X-Requested-With',
+      'Content-Type',
+      'Accept',
+      'Authorization',
+      'Access-Control-Allow-Origin',
+      'Access-Control-Allow-Headers',
+      'Access-Control-Allow-Methods'
+    ],
+    exposedHeaders: ['Content-Length', 'X-Foo', 'X-Bar'],
     credentials: true,
+    preflightContinue: false,
+    optionsSuccessStatus: 200,
   });
 
   // Enable global validation pipe
