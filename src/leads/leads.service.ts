@@ -1,7 +1,7 @@
 // src/leads/leads.service.ts
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma.service';
-import { Lead } from 'generated/prisma';
+import { Lead } from '@prisma/client';
 import { CreateLeadDto } from './dto/create-lead.dto'; // <--- Import DTO
 
 @Injectable()
