@@ -18,7 +18,7 @@ model Lead {
   fullName    String
   email       String   
   mobilePhone String
-  consent     Boolean
+  consent     Boolean? // Made optional
   createdAt   DateTime @default(now()) // Timestamp for when the record was created
   updatedAt   DateTime @updatedAt     // Timestamp for when the record was last updated
 }

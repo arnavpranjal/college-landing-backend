@@ -1,5 +1,5 @@
 // src/leads/dto/create-lead.dto.ts
-import { IsString, IsEmail, IsNotEmpty, IsBoolean, Matches, MinLength, MaxLength } from 'class-validator';
+import { IsString, IsEmail, IsNotEmpty, IsBoolean, Matches, MinLength, MaxLength, IsOptional } from 'class-validator';
 import { Transform } from 'class-transformer';
 
 export class CreateLeadDto {
@@ -26,7 +26,7 @@ export class CreateLeadDto {
   @MaxLength(20, { message: 'Mobile phone number seems too long.'})
   mobilePhone: string;
 
-  @IsNotEmpty({ message: 'Consent for data processing is required.' })
+  @IsOptional()
   @IsBoolean({ message: 'Consent must be a boolean value (true or false).' })
-  consent: boolean;
+  consent?: boolean;
 }

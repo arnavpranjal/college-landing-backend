@@ -16,7 +16,7 @@ export class LeadsService {
           fullName: data.fullName,
           email: data.email,
           mobilePhone: data.mobilePhone,
-          consent: data.consent,
+          consent: data.consent ?? true, // Default to true if not provided
         },
       });
       console.log('New lead created in DB:', newLead);

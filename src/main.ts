@@ -9,7 +9,12 @@ async function bootstrap() {
 
   // Enable CORS to allow frontend requests
   app.enableCors({
-    origin: ['https://college-landing-frontend.vercel.app/'], // Allow requests from Next.js frontend
+    origin: [
+      'http://localhost:3001', // Next.js dev server
+      'http://localhost:3000', // Alternative local port
+      'https://college-landing-frontend.vercel.app', // Production frontend (without trailing slash)
+      'https://landingpage-frontend.vercel.app', // Alternative frontend URL
+    ],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
