@@ -7,14 +7,9 @@ import { PrismaClientExceptionFilter } from './common/filters/prisma-client-exce
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  // Enable CORS to allow frontend requests
+  // Enable CORS to allow frontend requests - Very permissive for debugging
   app.enableCors({
-    origin: [
-      'http://localhost:3001', // Next.js dev server
-      'http://localhost:3000', // Alternative local port
-      'https://college-landing-frontend.vercel.app', // Production frontend
-      'https://landingpage-frontend.vercel.app', // Alternative frontend URL
-    ],
+    origin: true, // Allow all origins for now
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
     allowedHeaders: [
       'Origin',
@@ -22,14 +17,12 @@ async function bootstrap() {
       'Content-Type',
       'Accept',
       'Authorization',
-      'Access-Control-Allow-Origin',
-      'Access-Control-Allow-Headers',
-      'Access-Control-Allow-Methods'
+      'Cache-Control',
+      'Pragma'
     ],
-    exposedHeaders: ['Content-Length', 'X-Foo', 'X-Bar'],
     credentials: true,
     preflightContinue: false,
-    optionsSuccessStatus: 200,
+    optionsSuccessStatus: 204,
   });
 
   // Enable global validation pipe
