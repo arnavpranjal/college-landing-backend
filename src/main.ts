@@ -8,21 +8,27 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   // Enable CORS to allow frontend requests - Very permissive for debugging
+  // app.enableCors({
+  //   origin: true, // Allow all origins for now
+  //   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
+  //   allowedHeaders: [
+  //     'Origin',
+  //     'X-Requested-With',
+  //     'Content-Type',
+  //     'Accept',
+  //     'Authorization',
+  //     'Cache-Control',
+  //     'Pragma'
+  //   ],
+  //   credentials: true,
+  //   preflightContinue: false,
+  //   optionsSuccessStatus: 204,
+  // });
+
   app.enableCors({
-    origin: true, // Allow all origins for now
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
-    allowedHeaders: [
-      'Origin',
-      'X-Requested-With',
-      'Content-Type',
-      'Accept',
-      'Authorization',
-      'Cache-Control',
-      'Pragma'
-    ],
+    origin: 'https://college-landing-frontend.vercel.app',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
     credentials: true,
-    preflightContinue: false,
-    optionsSuccessStatus: 204,
   });
 
   // Enable global validation pipe
