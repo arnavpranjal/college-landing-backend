@@ -1,5 +1,5 @@
 // src/leads/dto/create-lead.dto.ts
-import { IsString, IsEmail, IsNotEmpty, IsBoolean, Matches, MinLength, MaxLength, IsOptional } from 'class-validator';
+import { IsString, IsEmail, IsNotEmpty, IsBoolean, Matches, MinLength, MaxLength, IsOptional, IsIP } from 'class-validator';
 import { Transform } from 'class-transformer';
 
 export class CreateLeadDto {
@@ -25,6 +25,16 @@ export class CreateLeadDto {
   @MinLength(8, { message: 'Mobile phone number seems too short.'}) // e.g. +1234567
   @MaxLength(20, { message: 'Mobile phone number seems too long.'})
   mobilePhone: string;
+
+  @IsNotEmpty({ message: 'College name is required.' })
+  @IsString({ message: 'College name must be a string.' })
+  @MinLength(2, { message: 'College name must be at least 2 characters long.' })
+  @MaxLength(100, { message: 'College name must be at most 100 characters long.' })
+  collegeName: string;
+
+  @IsOptional()
+  @IsIP(undefined, { message: 'IP address must be a valid IPv4 or IPv6 address.' })
+  ipAddress?: string;
 
   @IsOptional()
   @IsBoolean({ message: 'Consent must be a boolean value (true or false).' })
