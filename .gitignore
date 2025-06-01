@@ -59,3 +59,4 @@ report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
 # Google Sheets credentials
 config/google-sheets-service-account.json
+config/college-landing-integration-d468e35b8ace.json
