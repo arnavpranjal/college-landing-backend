@@ -9,7 +9,7 @@ export class EmailService {
 
   // Hardcoded array of email addresses
   private readonly emailRecipients = [
-    'arnavpranjal365@gmail.com',
+    '365arush@gmail.com',
     // Add more email addresses here as needed
   ];
 
