@@ -68,7 +68,7 @@ async function testGoogleSheetsConnection() {
       '+1234567890',
       'Test College',
       '127.0.0.1',
-      new Date().toISOString(),
+      new Date().getDate(), // Extract only the day part of the date (1-31)
     ];
     
     const writeResponse = await sheets.spreadsheets.values.append({

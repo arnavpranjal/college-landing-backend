@@ -59,16 +59,23 @@ export class GoogleSheetsService {
         return;
       }
 
+      // Helper function to format date as DD-MM-YYYY
+      const formatDate = (date: Date): string => {
+        const day = date.getDate().toString().padStart(2, '0');
+        const month = (date.getMonth() + 1).toString().padStart(2, '0'); // getMonth() is 0-based
+        const year = date.getFullYear();
+        return `${day}-${month}-${year}`;
+      };
+
       // Prepare data for Google Sheets (matching actual sheet structure)
-      // Columns: ID, Full Name, Email, Mobile Phone, College Name, IP Address, Created At
+      // Columns: Full Name, Email, Mobile Phone, College Name, IP Address, Created At
       const rowData = [
-        leadData.id,
         leadData.fullName,
         leadData.email,
         leadData.mobilePhone,
         leadData.collegeName,
         leadData.ipAddress || '', // Handle null IP address
-        leadData.createdAt.toISOString(), // Format date as ISO string
+        formatDate(leadData.createdAt), // Format date as DD-MM-YYYY
       ];
 
       // Append data to the sheet
